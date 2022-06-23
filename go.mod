@@ -12,7 +12,7 @@ require (
 	github.com/hashicorp/terraform-plugin-log v0.4.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.17.0
 	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.9.0.20220616135310-b11a2a9a6c76
-	github.com/stretchr/testify v1.7.1
+	github.com/stretchr/testify v1.7.4
 )
 
 require (
@@ -74,7 +74,7 @@ require (
 	google.golang.org/grpc v1.46.0 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gotest.tools/v3 v3.0.3 // indirect
 )
 
