@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"testing"
 
-	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	iot "github.com/scaleway/scaleway-sdk-go/api/iot/v1"
@@ -77,7 +76,7 @@ func TestAccScalewayIotRoute_S3(t *testing.T) {
 	}
 	tt := NewTestTools(t)
 	defer tt.Cleanup()
-	bucketName := sdkacctest.RandomWithPrefix("test-acc-scaleway-iot-route-s3")
+	bucketName := randomWithPrefix("scaleway-iot-route-s3")
 
 	resource.ParallelTest(t, resource.TestCase{
 		PreCheck:          func() { testAccPreCheck(t) },

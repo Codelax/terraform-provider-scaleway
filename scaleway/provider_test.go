@@ -18,7 +18,6 @@ import (
 
 	"github.com/dnaeon/go-vcr/cassette"
 	"github.com/dnaeon/go-vcr/recorder"
-	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	accountV2 "github.com/scaleway/scaleway-sdk-go/api/account/v2"
@@ -171,7 +170,7 @@ func cassetteMatcher(actual *http.Request, expected cassette.Request) bool {
 	expectedURL.RawQuery = expectedURLValues.Encode()
 
 	// Specific handling of s3 URLs
-	// Url format is https://test-acc-scaleway-object-bucket-lifecycle-8445817190507446251.s3.fr-par.scw.cloud/?lifecycle=
+	// Url format is https://tf-acc-scaleway-object-bucket-lifecycle-8445817190507446251.s3.fr-par.scw.cloud/?lifecycle=
 	if strings.HasSuffix(actualURL.Host, "scw.cloud") {
 		if !strings.HasSuffix(expectedURL.Host, "scw.cloud") {
 			return false
@@ -283,9 +282,9 @@ func createFakeSideProject(tt *TestTools) (*accountV2.Project, *iam.APIKey, Fake
 		return nil
 	}
 
-	projectName := sdkacctest.RandomWithPrefix("test-acc-scaleway-project")
-	iamApplicationName := sdkacctest.RandomWithPrefix("test-acc-scaleway-iam-app")
-	iamPolicyName := sdkacctest.RandomWithPrefix("test-acc-scaleway-iam-policy")
+	projectName := randomWithPrefix("scaleway-project")
+	iamApplicationName := randomWithPrefix("scaleway-iam-app")
+	iamPolicyName := randomWithPrefix("scaleway-iam-policy")
 
 	projectAPI := accountV2.NewAPI(tt.Meta.scwClient)
 	project, err := projectAPI.CreateProject(&accountV2.CreateProjectRequest{
@@ -380,9 +379,9 @@ func createFakeIAMManager(tt *TestTools) (*accountV2.Project, *iam.APIKey, FakeS
 		return nil
 	}
 
-	projectName := sdkacctest.RandomWithPrefix("test-acc-scaleway-project")
-	iamApplicationName := sdkacctest.RandomWithPrefix("test-acc-scaleway-iam-app")
-	iamPolicyName := sdkacctest.RandomWithPrefix("test-acc-scaleway-iam-policy")
+	projectName := randomWithPrefix("scaleway-project")
+	iamApplicationName := randomWithPrefix("scaleway-iam-app")
+	iamPolicyName := randomWithPrefix("scaleway-iam-policy")
 
 	projectAPI := accountV2.NewAPI(tt.Meta.scwClient)
 	project, err := projectAPI.CreateProject(&accountV2.CreateProjectRequest{

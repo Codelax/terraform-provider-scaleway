@@ -6,7 +6,6 @@ import (
 	"regexp"
 	"testing"
 
-	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"github.com/stretchr/testify/require"
@@ -15,7 +14,7 @@ import (
 func TestAccScalewayDataSourceObjectStorage_Basic(t *testing.T) {
 	tt := NewTestTools(t)
 	defer tt.Cleanup()
-	bucketName := sdkacctest.RandomWithPrefix("test-acc-scaleway-object-bucket")
+	bucketName := randomWithPrefix("scaleway-object-bucket")
 	// resourceName := "data.scaleway_object_bucket.main"
 	resource.ParallelTest(t, resource.TestCase{
 		PreCheck:          func() { testAccPreCheck(t) },
@@ -46,7 +45,7 @@ func TestAccScalewayDataSourceObjectStorage_Basic(t *testing.T) {
 func TestAccScalewayDataSourceObjectStorage_ProjectIDAllowed(t *testing.T) {
 	tt := NewTestTools(t)
 	defer tt.Cleanup()
-	bucketName := sdkacctest.RandomWithPrefix("test-acc-scaleway-object-bucket")
+	bucketName := randomWithPrefix("scaleway-object-bucket")
 
 	project, iamAPIKey, terminateFakeSideProject, err := createFakeSideProject(tt)
 	require.NoError(t, err)
@@ -92,7 +91,7 @@ func TestAccScalewayDataSourceObjectStorage_ProjectIDAllowed(t *testing.T) {
 func TestAccScalewayDataSourceObjectStorage_ProjectIDForbidden(t *testing.T) {
 	tt := NewTestTools(t)
 	defer tt.Cleanup()
-	bucketName := sdkacctest.RandomWithPrefix("test-acc-scaleway-object-bucket")
+	bucketName := randomWithPrefix("scaleway-object-bucket")
 
 	project, iamAPIKey, terminateFakeSideProject, err := createFakeSideProject(tt)
 	require.NoError(t, err)

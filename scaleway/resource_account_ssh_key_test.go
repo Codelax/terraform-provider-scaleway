@@ -42,7 +42,7 @@ func testSweepAccountSSHKey(_ string) error {
 }
 
 func TestAccScalewayAccountSSHKey_basic(t *testing.T) {
-	name := "tf-test-account-ssh-key-basic"
+	name := nameWithPrefix("account-ssh-key-basic")
 	SSHKey := "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEEYrzDOZmhItdKaDAEqJQ4ORS2GyBMtBozYsK5kiXXX opensource@scaleway.com"
 	tt := NewTestTools(t)
 	defer tt.Cleanup()
@@ -83,7 +83,7 @@ func TestAccScalewayAccountSSHKey_basic(t *testing.T) {
 }
 
 func TestAccScalewayAccountSSHKey_WithNewLine(t *testing.T) {
-	name := "tf-test-account-ssh-key-newline"
+	name := nameWithPrefix("account-ssh-key-newline")
 	SSHKey := "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDjfkdWCwkYlVQMDUfiZlVrmjaGOfBYnmkucssae8Iup opensource@scaleway.com"
 	tt := NewTestTools(t)
 	defer tt.Cleanup()
@@ -159,7 +159,7 @@ func testAccCheckScalewayAccountSSHKeyExists(tt *TestTools, n string) resource.T
 }
 
 func TestAccScalewayAccountSSHKey_ChangeResourceName(t *testing.T) {
-	name := "TestAccScalewayAccountSSHKey_ChangeResourceName"
+	name := nameWithPrefix("ssh-key-name-change")
 	SSHKey := "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICJEoOOgQBLJPs4g/XcPTKT82NywNPpxeuA20FlOPlpO opensource@scaleway.com"
 	tt := NewTestTools(t)
 	defer tt.Cleanup()

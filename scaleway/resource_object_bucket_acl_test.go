@@ -4,14 +4,13 @@ import (
 	"fmt"
 	"testing"
 
-	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 
 func TestAccScalewayObjectBucketACL_Basic(t *testing.T) {
 	tt := NewTestTools(t)
 	defer tt.Cleanup()
-	testBucketName := sdkacctest.RandomWithPrefix("test-acc-scaleway-object-acl-basic")
+	testBucketName := randomWithPrefix("scaleway-object-acl-basic")
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:          func() { testAccPreCheck(t) },
@@ -61,7 +60,7 @@ func TestAccScalewayObjectBucketACL_Basic(t *testing.T) {
 func TestAccScalewayObjectBucketACL_Grantee(t *testing.T) {
 	tt := NewTestTools(t)
 	defer tt.Cleanup()
-	testBucketName := sdkacctest.RandomWithPrefix("test-acc-scaleway-object-acl-grantee")
+	testBucketName := randomWithPrefix("scaleway-object-acl-grantee")
 
 	ownerID := "105bdce1-64c0-48ab-899d-868455867ecf"
 	ownerIDChild := "50ab77d5-56bd-4981-a118-4e0fa5309b59"
@@ -144,7 +143,7 @@ func TestAccScalewayObjectBucketACL_Grantee(t *testing.T) {
 func TestAccScalewayObjectBucketACL_GranteeWithOwner(t *testing.T) {
 	tt := NewTestTools(t)
 	defer tt.Cleanup()
-	testBucketName := sdkacctest.RandomWithPrefix("test-acc-scaleway-object-acl-grantee-owner")
+	testBucketName := randomWithPrefix("scaleway-object-acl-grantee-owner")
 	ownerID := "105bdce1-64c0-48ab-899d-868455867ecf"
 	resource.Test(t, resource.TestCase{
 		PreCheck:          func() { testAccPreCheck(t) },
